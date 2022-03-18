@@ -27,6 +27,10 @@ class Task extends Entity<TaskProps> {
   get targetDate() { 
     return this.props.targetDate; 
   }
+
+  get state() {
+    return this.props.state;
+  }
   
 }
 

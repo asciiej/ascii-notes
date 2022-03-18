@@ -1,4 +1,4 @@
-interface CreateTaskResponse {
+interface ChangeTaskStateResponse {
   readonly id: string;
   readonly title: string;
   readonly description: string;
@@ -6,4 +6,4 @@ interface CreateTaskResponse {
   readonly state: string;
 }
 
-export { CreateTaskResponse };
+export { ChangeTaskStateResponse };
