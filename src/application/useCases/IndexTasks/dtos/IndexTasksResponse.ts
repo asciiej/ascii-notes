@@ -1,10 +1,10 @@
 interface IndexTasksResponse {
   tasks: {
-    id: string;
-    title: string;
-    description: string;
-    state: string;
-    targetDate: Date;
+    readonly id: string;
+    readonly title: string;
+    readonly description: string;
+    readonly state: string;
+    readonly targetDate: Date;
   }[];
 }
 
