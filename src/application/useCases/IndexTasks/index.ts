@@ -6,7 +6,17 @@ class IndexTasks {
 
   async execute(): Promise<IndexTasksResponse> {
     const tasks = await this.tasksRepository.find();
-    return { tasks };
+    return {
+      tasks: tasks.map((task) => {
+        return {
+          id: task.id,
+          title: task.title,
+          description: task.description,
+          state: task.state,
+          targetDate: task.targetDate,
+        };
+      }),
+    };
   }
 }
 
