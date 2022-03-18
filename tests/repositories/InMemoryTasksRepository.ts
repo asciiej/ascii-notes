@@ -24,8 +24,12 @@ class InMemoryTasksRepository implements TasksRepository {
 
   async update(dto: UpdateTaskDTO): Promise<Task | null> {
     const index = this.tasks.findIndex((task) => task.id === dto.id);
-    const task = this.tasks[index];
-    Object.assign(task, dto);
+    const task = Task.create({
+      description: dto.description || this.tasks[index].props.description,
+      title: dto.title || this.tasks[index].props.title,
+      targetDate: dto.targetDate || this.tasks[index].props.targetDate,
+      state: dto.state || this.tasks[index].props.state,
+    });
     this.tasks[index] = task;
     return task;
   }
