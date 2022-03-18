@@ -1,0 +1,3 @@
+interface IndexTasksRequest {}
+
+export { IndexTasksRequest };
