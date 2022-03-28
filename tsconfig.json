@@ -9,6 +9,7 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
+      "@config/*": ["src/config/*"],
       "@core/*": ["src/core/*"],
       "@domain/*": ["src/domain/*"],
       "@application/*": ["src/application/*"],
