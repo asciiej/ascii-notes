@@ -1,3 +1,0 @@
-interface IndexTasksRequest {}
-
-export { IndexTasksRequest };

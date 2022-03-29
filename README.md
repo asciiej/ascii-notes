@@ -8,7 +8,7 @@
 <p>Quais as necessidades que o software deverá sanar? O que o cliente espera do software?</p>
 
 - <details>
-  <summary>Necessário software para gerenciar tarefas a serem feitas</summary>
+  <summary>Necessário software para gerenciar tarefas a serem feitas no formato kanban</summary>
   É necessário que o software gerencie minhas tarefas do dia a dia, permitindo que eu adicione novas tarefas, atualize a descrição ou título ou a data máxima de conclusão de uma tarefa existente, mude o estado da tarefa entre "a fazer", "fazendo" e "concluido", além disso deve permitir que eu exclua uma tarefa, e também preciso que sejam mostradas em um quadro estilo kanban.
   Quando a tarefa é movida para o estado "concluido" deve se armazenar a data de conclusão.
   As regras de mudanças de estados são as seguintes, as tarefas somente poderão mudar de "a fazer" para "fazendo" e de "fazendo" para "concluido".
@@ -18,14 +18,34 @@
 
 <br/>
 <h3><strong>Requisitos Não-Funcionais</strong></h3>
-<p>O que é necessário para resolver o problema do cliente? Quais tecnologias, banco de dados, algoritmos serão necessários?</p>
+<p>O que é necessário para resolver o problema do cliente? Quais tecnologias, bibliotecas, algoritmos serão necessários?</p>
 
 - <details>
-  <summary>Identificado a necessidade das seguintes tecnologias</summary>
+  <summary>Quais tecnologias usaremos para construir o software?</summary>
   
-  - <strong>mongodb</strong> · utilizaremos um banco de dados não relacional pois o software não possuirá relacionamentos, tendo em vista que existirá apenas uma tabela, mas caso futuramente ele evolua para mais tabelas o mongodb também permite relacionamentos.
+  - <strong>mongodb ou postgres</strong> · utilizaremos um banco de dados não relacional pois o software não possuirá relacionamentos, tendo em vista que existirá apenas uma tabela, mas caso futuramente ele evolua para mais tabelas o mongodb também permite relacionamentos.
   - <strong>nodejs</strong> · utilizaremos o nodejs como tecnologia base de desenvolvimento visando o atual dominio da mesma por parte dos membros da empresa e a facilidade que ela proporciona no desenvolvimento.
   - <strong>reactjs</strong> · utilizaremos a biblioteca com mais confiabilidade do mercado no quesito de criação de interfaces, pois a mesma possui muitos recursos prontos que nos facilitarão na criação do quadro kanban.
+  - <strong>git/gitflow/github</strong> · utilizaremos a ferramenta git para versionarmos o nosso código juntamente com o framework git-flow para gerenciar o trabalho em equipe e por fim hospedaremos nosso codigo fonte na plataforma github.
+  - <strong>heroku/netlify/vercel</strong> · visando facilitar a análise e avaliação do trabalho feito hospedaremos o produto final nas plataformas gratuitas heroku para o backend e netlify ou vercel para o frontend.
+  </details>
+
+  <details>
+    <summary>O software deverá persistir dados?</summary>
+    
+    - Como trata-se de um software de gestão de tarefas é necessário que se persista os dados, portanto faz-se necessário o uso de um banco de dados postgres ou mongodb nesse caso especifico.
+
+    - Se o software fosse um aplicativo de celular poderia se pensar em salvar os dados diretamente no celular do usuário, assim sendo a persistencia de dados no aparelho do usuário utilizaria um banco de dados sqlite ou realmdb
+  </details>
+  
+  <details>
+    <summary>Quais algoritmos utilizaremos?</summary>
+    
+    - Caso o software precise de autenticação de usuários, usaremos o algoritmos bcrypt para criptografar as senhas.
+    
+    - Caso seja necessário o envio de emails utilizaremos o handlebars para compor o corpo do email e o nodemailer para enviar os emails
+
+    - Caso nosso software possua a necessidade de persistir dados utilizaremos algum ORM (prisma ou mongoose) para facilitar o acesso ao banco de dados (postgres ou mongodb)
   </details>
 
 <br/>
@@ -54,6 +74,7 @@
    - title: string required
    - description: string required
    - targetDate: datetime required
+   - status: string required enum('todo', 'doing', 'done')
    - createdAt: datetime default now
    - updatedAt: datetime default now
   </details>
